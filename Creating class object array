@@ -1,0 +1,83 @@
+import java.util.*;
+
+public class Main{
+    
+    public static void main(String args[]){
+        
+        int n;
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+        
+        Book b[]=new Book[n];
+        
+        for(int i=0;i<n;i++){
+            b[i]=new Book();            
+        }
+        
+        for(int i=0;i<n;i++){
+            b[i].setid(sc.nextInt());
+            sc.nextLine();
+            b[i].setname(sc.nextLine());
+            b[i].setauthor(sc.nextLine());
+            b[i].setprice(sc.nextDouble());
+        }
+        
+        b=getsorted(b,n);
+        for(int i=0;i<n;i++){
+            System.out.println(b[i].getid()+" "+b[i].getname()+" "+b[i].getauthor()+" "+b[i].getprice());
+        }
+        
+    }
+    
+    static Book[] getsorted(Book [] b,int n){
+        
+        Book bb=new Book();
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+            if(b[i].getprice()>b[j].getprice())
+            
+                bb=b[i];
+                b[i]=b[j];
+                b[j]=bb;
+            }
+        }
+        
+    return b;        
+    }
+    
+}
+
+class Book{
+    
+    int id;
+    String name;
+    String author;
+    double price;
+    
+    int getid(){
+        return this.id;
+    }
+    String getname(){
+        return this.name;
+    }
+    String getauthor(){
+        return this.author;
+    }
+    double getprice(){
+        return this.price;
+    }
+    
+    void setid(int i){
+        this.id=i;
+    }
+    void setname(String nae){
+        this.name=nae;
+    }
+    void setauthor(String a){
+        this.author=a;
+    }
+    void setprice(double d){
+        this.price=d;
+    }
+    
+}
